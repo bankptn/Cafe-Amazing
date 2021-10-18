@@ -1,0 +1,105 @@
+{% load static %}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/signup.js' %}"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+
+{% csrf_token %}
+<script>
+const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+</script>
+
+{% block content %}
+<body>
+    <header>
+        <nav>
+            <div class="bar"></div>
+        </nav>
+        <div class="container">
+            <div class="logo">
+                <div class="navlogo"></div>
+                
+                    <img src="{% static 'amazing.jpg' %}" alt="GinLaoGun" height="400" width="383.5" right="40" class="bc" >
+                
+            </div>
+            <section class="background">
+                <br>
+                <section class="top">
+                    <h2>Sign Up</h2>
+                </section>
+                <form id='form_signup' action='/'>
+                    <section class="name">
+                        <div class="name-title">
+                            <h1>Name</h1>
+                            <input type='text' id='txt_Name' name='first_name' class='form-control' placeholder='Name'>
+                        </div>
+                        <div class="id-title">
+                            <h1>Minit</h1>
+                            <input type='text' maxlength="13" id='txt_Minit' name='minit' class='form-control' placeholder='Minit'>
+                        </div>
+                        <div class="lastname-title">
+                            <h1>Last Name</h1>
+                            <input type='text' id='txt_LastName' name='last_name' class='form-control' placeholder='Last Name'>
+                        </div>
+                        
+                    </section>
+                    <br>
+                    <section class="birth">
+                        <div class="birth-title">
+                            <h1>Date of Birth</h1>
+                            <input type='text' id='txt_Bday' name='bday' class='form-control' placeholder='Date of birth' readonly>
+                            <!-- <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Check this checkbox to continue.</div> -->
+                            <!-- <button type='button' class="btn btn-default" id='btn_BirthDay'> -->
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            <!-- </button> -->
+                        </div>
+                        <div class="address-title">
+                            <h1>Address</h1>
+                            <input type='text' id='txt_Address' name='address' class='form-control' placeholder='Address'>
+                        </div>       
+                        <div class="tel-title">
+                            <h1>Tel.</h1>
+                            <input type='text' maxlength="10" id='txt_Tel' name='phone_number' class='form-control' placeholder='Tel.'>
+                        </div>
+                    </section>
+                    <br>
+                    <section class="mail">
+                        <div class="mail-title">
+                            <h1>E-mail</h1>
+                            <input type='text' id='txt_Mail' name='email' class='form-control' placeholder='E-Mail'>
+                        </div>
+                        <div class="user-title">
+                            <h1>Sex</h1>
+                            <input type='text' id='txt_Sex' name='sex' class='form-control' placeholder='Sex'>
+                        </div>
+                        <div class="point-title">
+                            <h1>Point</h1>
+                            <input type='text' id='txt_Point' name='point' class='form-control' placeholder='Point'>
+                        </div>
+                        
+                        </section>
+                    <br>
+                    <section>
+                        
+                        <div class="signup-btn" id="signup-btn">
+                            <a href="#" class="signup">Sign Up</a>
+                        </div>
+                    </section>
+                </form>
+            </section>
+
+        </div>
+    </header>
+</body>
+</html>
+{% endblock %}

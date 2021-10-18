@@ -1,0 +1,99 @@
+{% extends 'base_blank.html' %}
+{% load static %}
+
+{% block title %}Invoice Report{% endblock %}
+
+{% block title_name %}Invoice Form{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+{% block content %}
+<div id='content'>
+    <div class='row'>
+        <div class='col-sm'>
+        Invoice No: {{ invoice.invoice_no }}<br>
+        </div>
+        <div class='col-sm'>
+        Invoice Date: {{ invoice.invoice_date }}<br>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-sm'>
+        Club ID: {{ invoice.club_id }}<br>
+        </div>
+        <div class='col-sm'>
+            Customer Name: {{ invoice.club_id__first_name }}<br>
+        </div>
+    </div>
+    <!-- <div class='row'>
+        <div class='col-sm'>
+        Point Amount: {{ customer.point }}<br>
+        </div>
+    </div> -->
+    <div class='row'>
+        <div class='col-sm'>
+        Payment Method: {{ invoice.payment_method }}<br>
+        </div>
+        <div class='col-sm'>
+            Payment Reference: {{ invoice.payment_reference }}<br>
+        </div>
+    </div>
+
+    <table class='table'>
+        <tr>
+            <th>#</th>
+            <th>Menu Code</th>
+            <th>Menu Name</th>
+            <th>Types</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Extended Price</th>
+        </tr>
+    {% for lineitem in invoicelineitem %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ lineitem.menu_code }}</td>
+            <td>{{ lineitem.menu_name }}</td>
+            <td>{{ lineitem.menu_types }}</td>
+            <td align='right'>{{ lineitem.unit_price }}</td>
+            <td align='right'>{{ lineitem.quantity }}</td>
+            <td align='right'>{{ lineitem.extended_price }}</td>
+        <tr>
+    {% endfor %}
+        <tr>
+            <td colspan='5'></td>
+            <td align='right'>Total Price</td><td align='right'>{{ invoice.total }}</td>
+        </tr>
+        <tr>
+            <td colspan='5'></td>
+            <td align='right'>TAX</td><td align='right'>{{ invoice.tax }}</td>
+        </tr>
+        <tr>
+            <td colspan='5'></td>
+            <td align='right'>Amount Due</td><td align='right'>{{ invoice.amount_due }}</td>
+        </tr>
+        <tr>
+            <td colspan='5'></td>
+            <td align='right'>Point Use</td><td align='right'>{{ invoice.point_use }}</td>
+        </tr>
+        <tr>
+            <td colspan='5'></td>
+            <td align='right'>Point to Baht</td><td align='right'>{{ invoice.point_to_baht }}</td>
+        </tr>
+        <tr>
+            <td colspan='5'></td>
+            <td align='right'>Amount Paid</td><td align='right'>{{ invoice.amount_paid }}</td>
+        </tr>
+        <tr>
+            <td colspan='5'></td>
+            <td align='right'>Change</td><td align='right'>{{ invoice.change }}</td>
+        </tr>
+        <tr>
+            <td colspan='5'></td>
+            <td align='right'>Point Received</td><td align='right'>{{ invoice.point_received }}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}
+
